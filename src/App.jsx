@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-    LMS_frontend
+    <div className="text-3xl bg-red-600 text-center">LMS-Frontend</div>
     </>
   )
 }
