@@ -7,14 +7,14 @@ import Footer from '../Components/Footer';
 // import { logout } from '../Redux/Slices/AuthSlice';
 function HomeLayout({ children }) {
 
-    // const dispatch = useDispatch();
-    // const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     // for checking if user is logged in
-    // const isLoggedIn = useSelector((state) => state?.auth?.isLoggedIn);
+    const isLoggedIn = useSelector((state) => state?.auth?.isLoggedIn);
 
     // for displaying the options acc to role
-    // const role = useSelector((state) => state?.auth?.role);
+    const role = useSelector((state) => state?.auth?.role);
 
     function changeWidth() {
         const drawerSide = document.getElementsByClassName("drawer-side");
@@ -29,13 +29,13 @@ function HomeLayout({ children }) {
         drawerSide[0].style.width = '0';
     }
 
-    // async function handleLogout(e) {
-    //     e.preventDefault();
+    async function handleLogout(e) {
+        e.preventDefault();
 
-    //     const res = await dispatch(logout());
-    //     if(res?.payload?.success)
-    //     navigate("/");
-    // }
+        // const res = await dispatch(logout());
+        if(res?.payload?.success)
+        navigate("/");
+    }
 
     return (
         <div className="min-h-[90vh]">
@@ -63,7 +63,7 @@ function HomeLayout({ children }) {
                             <Link to="/">Home</Link>
                         </li>
 
-                        {/* {isLoggedIn && role === 'ADMIN' && (
+                        {isLoggedIn && role === 'ADMIN' && (
                             <li>
                                 <Link to="/admin/dashboard"> Admin DashBoard</Link>
                             </li>
@@ -72,7 +72,7 @@ function HomeLayout({ children }) {
                             <li>
                                 <Link to="/course/create"> Create new course</Link>
                             </li>
-                        )} */}
+                        )}
 
                         <li>
                             <Link to="/courses">All Courses</Link>
@@ -86,7 +86,7 @@ function HomeLayout({ children }) {
                             <Link to="/about">About Us</Link>
                         </li>
 
-                        {/* {!isLoggedIn && (
+                        {!isLoggedIn && (
                             <li className="absolute bottom-4 w-[90%]">
                                 <div className="w-full flex items-center justify-center">
                                     <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full'>
@@ -110,7 +110,7 @@ function HomeLayout({ children }) {
                                     </button>
                                 </div>
                             </li>
-                        )} */}
+                        )}
                     </ul>
                 </div>
             </div>
